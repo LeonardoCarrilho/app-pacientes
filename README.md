@@ -2,6 +2,8 @@
 
 CRUD completo de pacientes com **React, Bootstrap 5 e Firebase Realtime Database**.
 
+🔗 **Ao vivo:** https://leonardocarrilho.github.io/app-pacientes/
+
 ## Funcionalidades
 - Cadastrar, listar, editar e excluir pacientes (nome, telefone, e-mail, idade, endereço)
 - Atualização em tempo real da lista (`onValue` do Firebase)
