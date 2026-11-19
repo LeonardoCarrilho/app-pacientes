@@ -4,8 +4,24 @@
 const env = import.meta.env;
 export const usandoFirebase = Boolean(env.VITE_FIREBASE_DATABASE_URL);
 
+// Pacientes fictícios carregados na primeira visita do modo demonstração.
+const EXEMPLOS = [
+  { nome: "Ana Beatriz Moura", telefone: "(11) 98734-2210", email: "ana.moura@exemplo.com", idade: 34, endereco: "Rua das Acácias, 120, São Paulo" },
+  { nome: "Carlos Eduardo Lima", telefone: "(11) 97621-4408", email: "carlos.lima@exemplo.com", idade: 58, endereco: "Av. Paulista, 1500, São Paulo" },
+  { nome: "Fernanda Okada", telefone: "(11) 99410-7735", email: "fernanda.okada@exemplo.com", idade: 27, endereco: "Rua Vergueiro, 845, São Paulo" },
+  { nome: "João Pedro Santos", telefone: "(11) 96558-0192", email: "joao.santos@exemplo.com", idade: 9, endereco: "Rua Augusta, 300, São Paulo" },
+  { nome: "Mariana Albuquerque", telefone: "(11) 98102-6644", email: "mariana.alb@exemplo.com", idade: 41, endereco: "Rua Oscar Freire, 77, São Paulo" },
+  { nome: "Roberto Nascimento", telefone: "(11) 3065-2281", email: "roberto.n@exemplo.com", idade: 72, endereco: "Rua da Consolação, 2100, São Paulo" },
+  { nome: "Tatiane Ribeiro", telefone: "(11) 95233-9087", email: "tati.ribeiro@exemplo.com", idade: 30, endereco: "" },
+];
+
 function repositorioLocal() {
   const CHAVE = "pacientes";
+  try {
+    if (localStorage.getItem(CHAVE) === null) {
+      localStorage.setItem(CHAVE, JSON.stringify(Object.fromEntries(EXEMPLOS.map((p, i) => [`exemplo-${i + 1}`, p]))));
+    }
+  } catch { /* armazenamento indisponível */ }
   const ouvintes = new Set();
   const ler = () => {
     try { return JSON.parse(localStorage.getItem(CHAVE)) || {}; } catch { return {}; }

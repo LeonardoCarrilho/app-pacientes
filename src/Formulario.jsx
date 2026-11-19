@@ -35,7 +35,7 @@ export default function Formulario({ editando, aoSalvar, aoCancelar }) {
   };
 
   return (
-    <form noValidate className={`card card-body shadow-sm ${validado ? "was-validated" : ""}`} onSubmit={enviar}>
+    <form noValidate className={`card card-body ${validado ? "was-validated" : ""}`} onSubmit={enviar}>
       <h2 className="h5 mb-3">{editando ? "Editar paciente" : "Novo paciente"}</h2>
       <div className="mb-3">
         <label className="form-label" htmlFor="nome">Nome completo</label>
